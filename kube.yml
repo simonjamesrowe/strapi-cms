@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: strapi-cms
+  labels:
+    app: strapi-cms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: strapi-cms
+  template:
+    metadata:
+      labels:
+        app: strapi-cms
+    spec:
+      containers:
+        - name: strapi-cms
+          image: "docker.pkg.github.com/simonjamesrowe/strapi-cms/strapi-cms:202001300625-257a3c0"
+          ports:
+            - containerPort: 1337
+          env:
+            - name: DATABASE_CLIENT
+              value: mongo
+            - name: DATABASE_HOST
+              value: mongodb.default.svc.cluster.local
+            - name: DATABASE_PORT
+              value: "27017"
+            - name: DATABASE_NAME
+              value: cms
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo
+                  key: username  
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo
+                  key: password  
+            - name: DATABASE_SSL
+              value: "false"
+            - name: STRAPI_LOG_LEVEL
+              value: trace
+            - name: STRAPI_LOG_TIMESTAMP
+              value: "true"
+            - name: STRAPI_LOG_PRETTY_PRINT
+              value: "true" 
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: strapi-cms
+spec:
+  selector:
+    app: strapi-cms
+  ports:
+    - protocol: TCP
+      port: 1337
+      targetPort: 1337
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: strapi-cms
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.allow-http: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  rules:
+    - host: content.simonjamesrowe.com
+      http:
+        paths:
+          - path: /admin
+            backend:
+              serviceName: strapi-cms
+              servicePort: 1337
+    - host: api.simonjamesrowe.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: strapi-cms
+              servicePort: 1337
+
+  tls:
+    - hosts:
+        - api.simonjamesrowe.com
+      secretName: wildcard-cert
+    - hosts:
+        - content.simonjamesrowe.com
+      secretName: wildcard-cert
