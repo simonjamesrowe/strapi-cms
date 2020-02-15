@@ -48,12 +48,12 @@ spec:
                 } 
             }
         }
-/**
+
         container ('kubectl') {
             stage ("deploy") {
                 sh 'sed "s/{{version}}/$buildVersion/g" kube.yml > kube-with-version.yml'
                 sh 'kubectl apply -f kube-with-version.yml'
             }
-        }**/
+        }
     }
 }
