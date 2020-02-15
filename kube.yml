@@ -20,32 +20,20 @@ spec:
           ports:
             - containerPort: 1337
           env:
-            - name: DATABASE_CLIENT
-              value: mongo
             - name: DATABASE_HOST
               value: mongodb.default.svc.cluster.local
-            - name: DATABASE_PORT
-              value: "27017"
             - name: DATABASE_NAME
               value: cms
             - name: DATABASE_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: mongo
-                  key: username  
+                  key: username
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mongo
-                  key: password  
-            - name: DATABASE_SSL
-              value: "false"
-            - name: STRAPI_LOG_LEVEL
-              value: trace
-            - name: STRAPI_LOG_TIMESTAMP
-              value: "true"
-            - name: STRAPI_LOG_PRETTY_PRINT
-              value: "true" 
+                  key: password
       imagePullSecrets:
         - name: regcred
 ---
