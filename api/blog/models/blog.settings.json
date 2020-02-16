@@ -28,6 +28,11 @@
     },
     "shortDescription": {
       "type": "text"
+    },
+    "tags": {
+      "collection": "tag",
+      "via": "blogs",
+      "dominant": true
     }
   }
 }
