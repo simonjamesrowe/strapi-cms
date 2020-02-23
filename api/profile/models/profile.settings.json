@@ -22,6 +22,9 @@
       "via": "related",
       "plugin": "upload",
       "required": false
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

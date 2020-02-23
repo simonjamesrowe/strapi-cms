@@ -122,6 +122,10 @@ spec:
             backend:
               serviceName: strapi-cms
               servicePort: 1337
+          - path: /jobs
+            backend:
+              serviceName: strapi-cms
+              servicePort: 1337
 
   tls:
     - hosts:
