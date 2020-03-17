@@ -18,7 +18,7 @@
       "required": true
     },
     "backgroundImage": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "plugin": "upload",
       "required": false
