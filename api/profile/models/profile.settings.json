@@ -25,6 +25,15 @@
     },
     "description": {
       "type": "richtext"
+    },
+    "headline": {
+      "type": "string"
+    },
+    "profileImage": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
     }
   }
 }
