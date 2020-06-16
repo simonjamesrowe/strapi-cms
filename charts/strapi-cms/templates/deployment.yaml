@@ -25,11 +25,32 @@ spec:
 {{ toYaml .Values.podAnnotations | indent 8 }}
 {{- end }}
     spec:
+      volumes:
+        - name: uploads
+          persistentVolumeClaim:
+            claimName: strapi-uploads-claim
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
+        - name: DATABASE_HOST
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-mongo-secret
+              key: hostname
+        - name: DATABASE_NAME
+          value: {{ .Values.databaseName}}
+        - name: DATABASE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-mongo-secret
+              key: username
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-mongo-secret
+              key: password
 {{- range $pkey, $pval := .Values.env }}
         - name: {{ $pkey }}
           value: {{ quote $pval }}
@@ -53,6 +74,9 @@ spec:
           periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
           successThreshold: {{ .Values.readinessProbe.successThreshold }}
           timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
+        volumeMounts:
+          - mountPath: /app/public/uploads
+            name: uploads
         resources:
 {{ toYaml .Values.resources | indent 12 }}
       terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
