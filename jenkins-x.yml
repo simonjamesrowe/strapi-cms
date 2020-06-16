@@ -4,8 +4,8 @@ pipelineConfig:
     pullRequest:
       build:
         replace: true
-        steps:
+        steps: []
     release:
       build:
         replace: true
-        steps:
+        steps: []
