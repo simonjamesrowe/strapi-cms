@@ -1,0 +1,139 @@
+
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bxw8f-6[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-sp6zv[0m
+{"level":"info","ts":1593868543.4947033,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/refs/heads/0.8.0-ns-support: no such file or directory"}
+{"level":"info","ts":1593868543.4951086,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bxw8f-6[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-n6kb2[0m
+{"level":"info","ts":1593868544.0132015,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1593868544.0150812,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bxw8f-6[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bxw8f-6[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-simonjamesrowe-strapi-cms-maste-bxw8f-9lz6r[0m
+{"level":"info","ts":1593868547.9626043,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/refs/heads/0.8.0-ns-support: no such file or directory"}
+{"level":"info","ts":1593868549.6434934,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/simonjamesrowe/strapi-cms.git @ v0.0.12 in path /workspace/source"}
+
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bxw8f-6[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:29df42269149ce1ae8f50f1618cafc7be9f7fff4
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bxw8f-6[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /workspace/xdg_config/git/credentials
+
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bxw8f-6[0m stage [32mfrom-build-pack[0m and container [32mstep-build-container-build[0m
+[36mINFO[0m[0000] Using dockerignore file: /workspace/source/.dockerignore 
+[36mINFO[0m[0000] Retrieving image manifest strapi/base        
+[36mINFO[0m[0002] Retrieving image manifest strapi/base        
+[36mINFO[0m[0003] Built cross stage deps: map[]                
+[36mINFO[0m[0003] Retrieving image manifest strapi/base        
+[36mINFO[0m[0003] Retrieving image manifest strapi/base        
+[36mINFO[0m[0004] Executing 0 build triggers                   
+[36mINFO[0m[0004] Checking for cached layer harbor.simonjamesrowe.com/todo/cache:c028024dabee9aa182c71834a61148046bfded549168978eeb309b46e6f5b46a... 
+[36mINFO[0m[0006] No cached layer found for cmd COPY ./package.json ./ 
+[36mINFO[0m[0006] cmd: EXPOSE                                  
+[36mINFO[0m[0006] Adding exposed port: 1337/tcp                
+[36mINFO[0m[0006] Unpacking ****fs as cmd COPY ./package.json ./ requires it. 
+[36mINFO[0m[0052] WORKDIR /app                                 
+[36mINFO[0m[0052] cmd: workdir                                 
+[36mINFO[0m[0052] Changed working directory to /app            
+[36mINFO[0m[0052] Creating directory /app                      
+[36mINFO[0m[0052] Resolving 1 paths                            
+[36mINFO[0m[0052] Taking snapshot of files...                  
+[36mINFO[0m[0052] COPY ./package.json ./                       
+[36mINFO[0m[0052] Resolving 1 paths                            
+[36mINFO[0m[0052] Taking snapshot of files...                  
+[36mINFO[0m[0052] COPY ./yarn.lock ./                          
+[36mINFO[0m[0052] Pushing layer harbor.simonjamesrowe.com/todo/cache:c028024dabee9aa182c71834a61148046bfded549168978eeb309b46e6f5b46a to cache now 
+[36mINFO[0m[0052] Resolving 1 paths                            
+[36mINFO[0m[0052] Taking snapshot of files...                  
+[36mINFO[0m[0052] RUN yarn install --network-timeout 1000000   
+[36mINFO[0m[0052] Taking snapshot of full filesystem...        
+[36mINFO[0m[0052] Pushing layer harbor.simonjamesrowe.com/todo/cache:cdc2d3f21a365b28cae6e3451b7aa3453108af4bcb78566ebf955952a46caa5f to cache now 
+[36mINFO[0m[0056] Resolving 40600 paths                        
+[36mINFO[0m[0063] cmd: /bin/sh                                 
+[36mINFO[0m[0063] args: [-c yarn install --network-timeout 1000000] 
+[36mINFO[0m[0063] Running: [/bin/sh -c yarn install --network-timeout 1000000] 
+yarn install v1.22.4
+[1/5] Validating package.json...
+[2/5] Resolving packages...
+[3/5] Fetching packages...
+warning url-loader@1.1.2: Invalid bin field for "url-loader".
+info fsevents@2.1.2: The platform "linux" is incompatible with this module.
+info "fsevents@2.1.2" is an optional dependency and failed compatibility check. Excluding it from installation.
+info fsevents@1.2.11: The platform "linux" is incompatible with this module.
+info "fsevents@1.2.11" is an optional dependency and failed compatibility check. Excluding it from installation.
+[4/5] Linking dependencies...
+warning "strapi-***** > bootstrap@4.4.1" has unmet peer dependency "jquery@1.9.1 - 3".
+warning "strapi-***** > bootstrap@4.4.1" has unmet peer dependency "popper.js@^1.16.0".
+warning "strapi-***** > @buffetjs/core > react-dates@21.7.0" has unmet peer dependency "react-with-direction@^1.3.1".
+warning "strapi-plugin-users-permissions > grant-koa@5.2.0" has unmet peer dependency "koa@>=2.0.0".
+[5/5] Building fresh packages...
+Done in 119.53s.
+[36mINFO[0m[0183] Taking snapshot of full filesystem...        
+[36mINFO[0m[0184] Resolving 156535 paths                       
+[36mINFO[0m[0327] Pushing layer harbor.simonjamesrowe.com/todo/cache:60cc9e98c0d4deaf92e13dce5a5db06512fd486f0d2dc20175a7dc12ed237dc8 to cache now 
+[36mINFO[0m[0327] COPY . .                                     
+[36mINFO[0m[0327] Resolving 149 paths                          
+[36mINFO[0m[0327] Taking snapshot of files...                  
+[36mINFO[0m[0327] Pushing layer harbor.simonjamesrowe.com/todo/cache:b9f7f0ebef81b4b4be5dbca76d4e8f9921bf45a66d9ba961652cc4524cf6e0ea to cache now 
+[36mINFO[0m[0327] RUN yarn build                               
+[36mINFO[0m[0327] cmd: /bin/sh                                 
+[36mINFO[0m[0327] args: [-c yarn build]                        
+[36mINFO[0m[0327] Running: [/bin/sh -c yarn build]             
+yarn run v1.22.4
+$ strapi build
+Building your ***** UI with development configuration ...
+ℹ Compiling Webpack
+✔ Webpack: Compiled successfully in 1.91m
+Done in 131.92s.
+[36mINFO[0m[0462] Taking snapshot of full filesystem...        
+[36mINFO[0m[0462] Resolving 158982 paths                       
+[36mINFO[0m[0527] EXPOSE 1337                                  
+[36mINFO[0m[0527] cmd: EXPOSE                                  
+[36mINFO[0m[0527] Adding exposed port: 1337/tcp                
+[36mINFO[0m[0527] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0527] ENV NODE_ENV production                      
+[36mINFO[0m[0527] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0527] CMD ["yarn", "start"]                        
+[36mINFO[0m[0527] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0527] Pushing layer harbor.simonjamesrowe.com/todo/cache:01cea909861a9386cb012a087499c2525d36091a2bc02f1e5abd02f2350cf3a1 to cache now 
+[33mWARN[0m[0528] error uploading layer to cache: failed to push to destination harbor.simonjamesrowe.com/todo/cache:c028024dabee9aa182c71834a61148046bfded549168978eeb309b46e6f5b46a: HEAD https://harbor.simonjamesrowe.com/v2/todo/cache/blobs/sha256:b58698852d16cd8bc42a6e433c1fdb3337faeeb227c5820d655c68c769734ee5: unsupported status code 401 
+
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bxw8f-6[0m stage [32mfrom-build-pack[0m and container [32mstep-build-post-build[0m
+no CVE provider running in the current ** namespace so skip adding image to be analysed
+
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bxw8f-6[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-changelog[0m
+Converted /workspace/source/charts/strapi-cms to an unshallow repository
+Generating change log from git ref d7f53360743855fbbc021f82b2178f4d4475377c => 885ecba166b6404742f27d24bc0a653c944cc1ac
+WARNING: Failed to enrich commit 29df42269149ce1ae8f50f1618cafc7be9f7fff4 with issues: users.jenkins.io "x-0" already exists
+WARNING: Failed to enrich commit 29df42269149ce1ae8f50f1618cafc7be9f7fff4 with issues: users.jenkins.io "x-0" already exists
+Finding issues in commit messages using git format
+WARNING: No release found for simonjamesrowe/strapi-cms and tag v0.0.12 so creating a new release
+Updated the release information at https://github.com/simonjamesrowe/strapi-cms/releases/tag/v0.0.12
+generated: /workspace/source/charts/strapi-cms/templates/release.yaml
+Created Release strapi-cms-0-0-12 resource in namespace **
+Updating PipelineActivity simonjamesrowe-strapi-cms-master-6 with version 0.0.12
+Updated PipelineActivities simonjamesrowe-strapi-cms-master-6 with release notes URL: https://github.com/simonjamesrowe/strapi-cms/releases/tag/v0.0.12
+
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bxw8f-6[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-helm-release[0m
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: storage.googleapis.com https://storage.googleapis.com/chartmuseum.jenkins-x.io
+Successfully added Helm repository storage.googleapis.com.
+Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080
+Successfully added Helm repository jenkins-x-chartmuseum.
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Uploading chart file strapi-cms-0.0.12.tgz to http://jenkins-x-chartmuseum:8080/api/charts
+Received 201 response: {"saved":true}
+
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bxw8f-6[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-jx-promote[0m
+WARNING: prow based install so skip waiting for the merge of Pull Requests to go green as currently there is an issue with gettingstatuses from the PR, see https://github.com/jenkins-x/**/issues/2410
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Promoting app strapi-cms version 0.0.12 to namespace **-staging
+Created Pull Request: https://github.com/simonjamesrowe/environment-simonjamesrowe-staging/pull/28
+Added label updatebot to Pull Request https://github.com/simonjamesrowe/environment-simonjamesrowe-staging/pull/28
+got git provider status pending from PR https://github.com/simonjamesrowe/environment-simonjamesrowe-staging/pull/28
+got git provider status pending from PR https://github.com/simonjamesrowe/environment-simonjamesrowe-staging/pull/28
+got git provider status pending from PR https://github.com/simonjamesrowe/environment-simonjamesrowe-staging/pull/28
+Pull Request https://github.com/simonjamesrowe/environment-simonjamesrowe-staging/pull/28 is merged at sha d0a419f7ea373900369f7cc6bc69ae8aedd0301c
+Pull Request merged but we are not waiting for the update pipeline to complete!
+WARNING: Could not find the service URL in namespace **-staging for names strapi-cms, **-strapi-cms, **-staging-strapi-cms
