@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skills_groups",
+  "info": {
+    "name": "Skills Group"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "skills": {
+      "collection": "skills"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "rating": {
+      "type": "decimal",
+      "min": 1,
+      "max": 10
+    },
+    "order": {
+      "type": "integer"
+    }
+  }
+}

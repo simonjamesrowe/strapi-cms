@@ -51,6 +51,11 @@ spec:
             secretKeyRef:
               name: {{ template "fullname" . }}-mongo-secret
               key: password
+        - name: ADMIN_JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "fullname" . }}-cms-secrets
+              key: jwtSigningKey
 {{- range $pkey, $pval := .Values.env }}
         - name: {{ $pkey }}
           value: {{ quote $pval }}

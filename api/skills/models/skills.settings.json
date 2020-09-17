@@ -1,37 +1,38 @@
 {
   "kind": "collectionType",
-  "connection": "default",
-  "collectionName": "blogs",
+  "collectionName": "skills",
   "info": {
-    "name": "Blog"
+    "name": "Skills"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "title": {
+    "name": {
       "type": "string"
     },
-    "content": {
+    "rating": {
+      "type": "decimal",
+      "max": 10,
+      "min": 1
+    },
+    "description": {
       "type": "richtext"
     },
     "image": {
       "model": "file",
       "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
       "plugin": "upload",
       "required": false
     },
-    "published": {
-      "type": "boolean",
-      "default": false,
-      "required": true
-    },
-    "shortDescription": {
-      "type": "text"
-    },
-    "tags": {
-      "collection": "tag"
+    "order": {
+      "type": "integer"
     }
   }
 }

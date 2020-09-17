@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "social_medias",
+  "info": {
+    "name": "social-media"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "link": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "facebook",
+        "twitter",
+        "linkedin",
+        "github"
+      ]
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}
