@@ -69,6 +69,17 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "mobileBackgroundImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }
