@@ -32,6 +32,11 @@
     },
     "tags": {
       "collection": "tag"
+    },
+    "skills": {
+      "collection": "skills",
+      "via": "blogs",
+      "dominant": true
     }
   }
 }

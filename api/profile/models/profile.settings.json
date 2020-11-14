@@ -46,6 +46,29 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "primaryEmail": {
+      "type": "email"
+    },
+    "secondaryEmail": {
+      "type": "email"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "sidebarImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }

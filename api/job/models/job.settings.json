@@ -1,4 +1,7 @@
 {
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "jobs",
   "info": {
     "name": "Job"
   },
@@ -39,8 +42,11 @@
     },
     "companyUrl": {
       "type": "string"
+    },
+    "skills": {
+      "collection": "skills",
+      "via": "jobs",
+      "dominant": true
     }
-  },
-  "connection": "default",
-  "collectionName": "jobs"
+  }
 }

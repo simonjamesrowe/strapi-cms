@@ -33,6 +33,14 @@
     },
     "order": {
       "type": "integer"
+    },
+    "jobs": {
+      "via": "skills",
+      "collection": "job"
+    },
+    "blogs": {
+      "via": "skills",
+      "collection": "blog"
     }
   }
 }
