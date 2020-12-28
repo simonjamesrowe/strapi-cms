@@ -1,41 +1,138 @@
 
-Showing logs for build [32mmeta-simonjamesrowe-strapi-cms-pg6vw-2[0m stage [32mmeta-pipeline[0m and container [32mstep-credential-initializer-j2lbr[0m
-{"level":"info","ts":1592633345.3273199,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/refs/heads/0.8.0-ns-support: no such file or directory"}
-{"level":"info","ts":1592633345.3280475,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bwppc-2[0m stage [32mfrom-build-pack[0m and container [32mcredential-initializer[0m
+{"level":"info","ts":1609181355.6421454,"caller":"creds-init/main.go:44","msg":"Credentials initialized."}
 
-Showing logs for build [32mmeta-simonjamesrowe-strapi-cms-pg6vw-2[0m stage [32mmeta-pipeline[0m and container [32mstep-working-dir-initializer-s5rq6[0m
-{"level":"info","ts":1592633346.7760797,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
-{"level":"info","ts":1592633346.7773232,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bwppc-2[0m stage [32mfrom-build-pack[0m and container [32mworking-dir-initializer[0m
 
-Showing logs for build [32mmeta-simonjamesrowe-strapi-cms-pg6vw-2[0m stage [32mmeta-pipeline[0m and container [32mstep-place-tools[0m
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bwppc-2[0m stage [32mfrom-build-pack[0m and container [32mplace-tools[0m
 
-Showing logs for build [32mmeta-simonjamesrowe-strapi-cms-pg6vw-2[0m stage [32mmeta-pipeline[0m and container [32mstep-git-source-meta-simonjamesrowe-strapi-cms-pg6vw-qsqg9[0m
-{"level":"info","ts":1592633362.7497284,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/refs/heads/0.8.0-ns-support: no such file or directory"}
-{"level":"info","ts":1592633364.3008735,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/simonjamesrowe/strapi-cms.git @ f7b0710b67f84ab0e7d7298f7bfafd4900d4eec5 in path /workspace/source"}
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bwppc-2[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-simonjamesrowe-strapi-cms-maste-bwppc-7d8q2[0m
+{"level":"info","ts":1609181363.9332798,"caller":"git/git.go:105","msg":"Successfully cloned https://github.com/simonjamesrowe/strapi-cms.git @ v0.0.17 in path /workspace/source"}
+{"level":"warn","ts":1609181363.9334757,"caller":"git/git.go:152","msg":"Unexpected error: creating symlink: symlink /tekton/home/.ssh /****/.ssh: file exists"}
+{"level":"info","ts":1609181363.9860384,"caller":"git/git.go:133","msg":"Successfully initialized and updated submodules in path /workspace/source"}
 
-Showing logs for build [32mmeta-simonjamesrowe-strapi-cms-pg6vw-2[0m stage [32mmeta-pipeline[0m and container [32mstep-git-merge[0m
-Using SHAs from PULL_REFS=master:f7b0710b67f84ab0e7d7298f7bfafd4900d4eec5
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bwppc-2[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-builder-home[0m
+
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bwppc-2[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:
 WARNING: no SHAs to merge, falling back to initial cloned commit
 
-Showing logs for build [32mmeta-simonjamesrowe-strapi-cms-pg6vw-2[0m stage [32mmeta-pipeline[0m and container [32mstep-merge-pull-refs[0m
-SKIP merge-pull-refs: Nothing to merge
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bwppc-2[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /workspace/xdg_config/git/credentials
 
-Showing logs for build [32mmeta-simonjamesrowe-strapi-cms-pg6vw-2[0m stage [32mmeta-pipeline[0m and container [32mstep-create-effective-pipeline[0m
-Effective pipeline written to jenkins-x-release-effective.yml
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bwppc-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-container-build[0m
+[36mINFO[0m[0000] Using dockerignore file: /workspace/source/.dockerignore 
+[36mINFO[0m[0000] Retrieving image manifest strapi/base        
+[36mINFO[0m[0001] Retrieving image manifest strapi/base        
+[36mINFO[0m[0003] Built cross stage deps: map[]                
+[36mINFO[0m[0003] Retrieving image manifest strapi/base        
+[36mINFO[0m[0004] Retrieving image manifest strapi/base        
+[36mINFO[0m[0005] Executing 0 build triggers                   
+[36mINFO[0m[0005] Checking for cached layer harbor.simonjamesrowe.com/todo/cache:cb85ebf6f9a00b574dba6d2902baa4f97d205d78f3df8a42caa61fc64791219a... 
+[36mINFO[0m[0005] No cached layer found for cmd COPY ./package.json ./ 
+[36mINFO[0m[0005] cmd: EXPOSE                                  
+[36mINFO[0m[0005] Adding exposed port: 1337/tcp                
+[36mINFO[0m[0005] Unpacking ****fs as cmd COPY ./package.json ./ requires it. 
+[36mINFO[0m[0806] WORKDIR /app                                 
+[36mINFO[0m[0806] cmd: workdir                                 
+[36mINFO[0m[0806] Changed working directory to /app            
+[36mINFO[0m[0806] Creating directory /app                      
+[36mINFO[0m[0806] Resolving 1 paths                            
+[36mINFO[0m[0806] Taking snapshot of files...                  
+[36mINFO[0m[0806] COPY ./package.json ./                       
+[36mINFO[0m[0806] Resolving 1 paths                            
+[36mINFO[0m[0806] Taking snapshot of files...                  
+[36mINFO[0m[0806] Pushing layer harbor.simonjamesrowe.com/todo/cache:cb85ebf6f9a00b574dba6d2902baa4f97d205d78f3df8a42caa61fc64791219a to cache now 
+[36mINFO[0m[0806] COPY ./yarn.lock ./                          
+[36mINFO[0m[0806] Resolving 1 paths                            
+[36mINFO[0m[0806] Taking snapshot of files...                  
+[36mINFO[0m[0806] RUN yarn install --network-timeout 1000000   
+[36mINFO[0m[0806] Taking snapshot of full filesystem...        
+[36mINFO[0m[0806] Pushing layer harbor.simonjamesrowe.com/todo/cache:c7ed09eb92ba25534d79bd3911f4fd25151137ae8ea84400b13f98b68644e492 to cache now 
+[36mINFO[0m[0807] Resolving 40715 paths                        
+[36mINFO[0m[0817] cmd: /bin/sh                                 
+[36mINFO[0m[0817] args: [-c yarn install --network-timeout 1000000] 
+[36mINFO[0m[0817] Running: [/bin/sh -c yarn install --network-timeout 1000000] 
+yarn install v1.22.5
+[1/5] Validating package.json...
+[2/5] Resolving packages...
+[3/5] Fetching packages...
+warning url-loader@1.1.2: Invalid bin field for "url-loader".
+info fsevents@2.1.2: The platform "linux" is incompatible with this module.
+info "fsevents@2.1.2" is an optional dependency and failed compatibility check. Excluding it from installation.
+info fsevents@1.2.11: The platform "linux" is incompatible with this module.
+info "fsevents@1.2.11" is an optional dependency and failed compatibility check. Excluding it from installation.
+[4/5] Linking dependencies...
+warning "strapi-***** > bootstrap@4.4.1" has unmet peer dependency "jquery@1.9.1 - 3".
+warning "strapi-***** > bootstrap@4.4.1" has unmet peer dependency "popper.js@^1.16.0".
+warning " > strapi-connector-bookshelf@3.1.4" has unmet peer dependency "knex@^0.20.0".
+warning "strapi-connector-bookshelf > bookshelf@1.2.0" has unmet peer dependency "knex@>=0.15.0 <0.22.0".
+warning "strapi-plugin-graphql > graphql-playground-middleware-koa@1.6.20" has unmet peer dependency "koa@^2".
+warning "strapi-plugin-graphql > graphql-type-long@0.1.1" has incorrect peer dependency "graphql@^0.9.1 || ^0.10.0 || ^0.12.0 || ^0.13.0".
+warning "strapi-plugin-users-permissions > grant-koa@5.2.0" has unmet peer dependency "koa@>=2.0.0".
+[5/5] Building fresh packages...
+Done in 182.83s.
+[36mINFO[0m[1000] Taking snapshot of full filesystem...        
+[36mINFO[0m[1001] Resolving 202956 paths                       
+[36mINFO[0m[1173] Pushing layer harbor.simonjamesrowe.com/todo/cache:cc0bfc50adbbb897e5b8e4b9a26fb8db7f08bd2a28f6319087603dcb3cb5f88f to cache now 
+[36mINFO[0m[1173] COPY . .                                     
+[36mINFO[0m[1173] Resolving 180 paths                          
+[36mINFO[0m[1173] Taking snapshot of files...                  
+[36mINFO[0m[1173] RUN yarn build                               
+[36mINFO[0m[1173] cmd: /bin/sh                                 
+[36mINFO[0m[1173] args: [-c yarn build]                        
+[36mINFO[0m[1173] Running: [/bin/sh -c yarn build]             
+[36mINFO[0m[1173] Pushing layer harbor.simonjamesrowe.com/todo/cache:6a5ee6b4c1782f207ec926ba9cc37361041b11ced87b54e5f4535b08ac6baed4 to cache now 
+yarn run v1.22.5
+$ strapi build
+Building your ***** UI with development configuration ...
+ℹ Compiling Webpack
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+✔ Webpack: Compiled successfully in 1.86m
+Done in 116.03s.
+[36mINFO[0m[1290] Taking snapshot of full filesystem...        
+[36mINFO[0m[1291] Resolving 206238 paths                       
+[36mINFO[0m[1396] Pushing layer harbor.simonjamesrowe.com/todo/cache:6a23f12f19cb2c01bae03423bad00e521473d1dea4b9e7de068293733ba82c18 to cache now 
+[36mINFO[0m[1396] EXPOSE 1337                                  
+[36mINFO[0m[1396] cmd: EXPOSE                                  
+[36mINFO[0m[1396] Adding exposed port: 1337/tcp                
+[36mINFO[0m[1396] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[1396] ENV NODE_ENV production                      
+[36mINFO[0m[1396] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[1396] CMD ["yarn", "start"]                        
+[36mINFO[0m[1396] No files changed in this command, skipping snapshotting. 
+[33mWARN[0m[1397] error uploading layer to cache: failed to push to destination harbor.simonjamesrowe.com/todo/cache:cb85ebf6f9a00b574dba6d2902baa4f97d205d78f3df8a42caa61fc64791219a: HEAD https://harbor.simonjamesrowe.com/v2/todo/cache/blobs/sha256:d11e1bada7bf1cca4da40c71dd71796d02da8a20982a00f294fe4bcfdf8311b4: unsupported status code 401 
 
-Showing logs for build [32mmeta-simonjamesrowe-strapi-cms-pg6vw-2[0m stage [32mmeta-pipeline[0m and container [32mstep-create-tekton-crds[0m
-running command: echo \$(**-release-version) > VERSION
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bwppc-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-post-build[0m
+no CVE provider running in the current ** namespace so skip adding image to be analysed
 
-running command: ** step tag --version \$(cat VERSION)
-Updating chart version in charts/strapi-cms/Chart.yaml to 0.0.8
-Updating repository in charts/strapi-cms/values.yaml to harbor.simonjamesrowe.com/simonjamesrowe/strapi-cms
-Updating tag in charts/strapi-cms/values.yaml to 0.0.8
-error: Have you set up a git credential helper? See https://help.github.com/articles/caching-your-github-password-in-git/
-: git output: To https://github.com/simonjamesrowe/strapi-cms.git
- ! [remote rejected] v0.0.8 -> v0.0.8 (cannot lock ref 'refs/tags/v0.0.8': reference already exists)
-error: failed to push some refs to 'https://github.com/simonjamesrowe/strapi-cms.git': failed to run 'git push origin v0.0.8' command in directory '', output: 'To https://github.com/simonjamesrowe/strapi-cms.git
- ! [remote rejected] v0.0.8 -> v0.0.8 (cannot lock ref 'refs/tags/v0.0.8': reference already exists)
-error: failed to push some refs to 'https://github.com/simonjamesrowe/strapi-cms.git''
-error: failed to set the version on release pipelines: failed to run '/bin/sh -c ** step tag --version $(cat VERSION)' command in directory '/workspace/source', output: ''
-[31m
-Pipeline failed on stage 'meta-pipeline' : container 'step-create-tekton-crds'. The execution of the pipeline has stopped.[0m
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bwppc-2[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-changelog[0m
+Converted /workspace/source/charts/strapi-cms to an unshallow repository
+Generating change log from git ref 497281117b27c7ae1119e800e0caca9bbdfb6b31 => 91a7bf4ccfac88bc70b43ee3e5c49d0d7cf994df
+WARNING: No release found for simonjamesrowe/strapi-cms and tag v0.0.17 so creating a new release
+Updated the release information at https://github.com/simonjamesrowe/strapi-cms/releases/tag/v0.0.17
+generated: /workspace/source/charts/strapi-cms/templates/release.yaml
+Created Release strapi-cms-0-0-17 resource in namespace **
+Updating PipelineActivity simonjamesrowe-strapi-cms-master-2 with version 0.0.17
+Updated PipelineActivities simonjamesrowe-strapi-cms-master-2 with release notes URL: https://github.com/simonjamesrowe/strapi-cms/releases/tag/v0.0.17
+
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bwppc-2[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-helm-release[0m
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: storage.googleapis.com https://storage.googleapis.com/chartmuseum.jenkins-x.io
+Successfully added Helm repository storage.googleapis.com.
+Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080
+Successfully added Helm repository jenkins-x-chartmuseum.
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Uploading chart file strapi-cms-0.0.17.tgz to http://jenkins-x-chartmuseum:8080/api/charts
+Received 201 response: {"saved":true}
+
+Showing logs for build [32msimonjamesrowe-strapi-cms-maste-bwppc-2[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-jx-promote[0m
+WARNING: prow based install so skip waiting for the merge of Pull Requests to go green as currently there is an issue with gettingstatuses from the PR, see https://github.com/jenkins-x/**/issues/2410
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Promoting app strapi-cms version 0.0.17 to namespace **-staging
+Created Pull Request: https://github.com/simonjamesrowe/environment-simonjamesrowe-staging/pull/61
+Added label updatebot to Pull Request https://github.com/simonjamesrowe/environment-simonjamesrowe-staging/pull/61
+got git provider status pending from PR https://github.com/simonjamesrowe/environment-simonjamesrowe-staging/pull/61
+got git provider status pending from PR https://github.com/simonjamesrowe/environment-simonjamesrowe-staging/pull/61
+got git provider status pending from PR https://github.com/simonjamesrowe/environment-simonjamesrowe-staging/pull/61
