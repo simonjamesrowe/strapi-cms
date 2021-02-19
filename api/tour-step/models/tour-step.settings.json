@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tour-steps",
+  "info": {
+    "name": "Tour Step"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "titleImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "selector": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
