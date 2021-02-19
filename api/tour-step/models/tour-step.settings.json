@@ -31,6 +31,13 @@
     "selector": {
       "type": "string",
       "required": true
+    },
+    "position": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "required": true
     }
   }
 }
