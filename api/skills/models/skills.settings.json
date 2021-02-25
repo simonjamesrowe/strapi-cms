@@ -35,12 +35,17 @@
       "type": "integer"
     },
     "jobs": {
-      "via": "skills",
-      "collection": "job"
+      "collection": "job",
+      "via": "skills"
     },
     "blogs": {
-      "via": "skills",
-      "collection": "blog"
+      "collection": "blog",
+      "via": "skills"
+    },
+    "includeOnResume": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

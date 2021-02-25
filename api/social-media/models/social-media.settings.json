@@ -23,6 +23,11 @@
     },
     "name": {
       "type": "string"
+    },
+    "includeOnResume": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }
