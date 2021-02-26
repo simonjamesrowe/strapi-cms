@@ -44,8 +44,8 @@
       "type": "string"
     },
     "skills": {
-      "via": "jobs",
       "collection": "skills",
+      "via": "jobs",
       "dominant": true
     },
     "education": {
@@ -56,6 +56,10 @@
     "includeOnResume": {
       "type": "boolean",
       "default": false,
+      "required": true
+    },
+    "location": {
+      "type": "string",
       "required": true
     }
   }
