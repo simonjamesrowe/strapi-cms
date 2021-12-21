@@ -15,11 +15,11 @@ spec:
           name: ""
           resources:
             requests:
-              cpu: 0.1
-              memory: 128Mi
+              cpu: 1
+              memory: 1Gi
             limits:
-              cpu: 400m
-              memory: 512Mi
+              cpu: 1
+              memory: 1Gi
           workingDir: /workspace/source
         steps:
         - image: uses:simonjamesrowe/jx3-pipeline-catalog/tasks/git-clone/git-clone-pr.yaml@versionStream
