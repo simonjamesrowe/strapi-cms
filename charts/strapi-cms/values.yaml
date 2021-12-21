@@ -3,18 +3,14 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: draft
-  tag: dev
+  repository: harbor.simonjamesrowe.com/simonjamesrowe/strapi-cms
+  tag: 0.0.24
   pullPolicy: IfNotPresent
-
 # define environment variables here as a map of key: value
 env:
-
 # enable this flag to use knative serve to deploy the app
 knativeDeploy: false
-
 databaseName: cms-staging
-
 # HorizontalPodAutoscaler
 hpa:
   enabled: false
@@ -22,7 +18,6 @@ hpa:
   maxReplicas: 6
   cpuTargetAverageUtilization: 80
   memoryTargetAverageUtilization: 80
-
 # Canary deployments
 # If enabled, Istio v1.5+ and Flagger need to be installed in the cluster
 canary:
@@ -44,14 +39,11 @@ canary:
   # The host is using Istio Gateway and is currently not auto-generated
   # Please overwrite the `canary.host` in `values.yaml` in each environment repository (e.g., staging, production)
   host: acme.com
-
 service:
   name: cms
   type: ClusterIP
   externalPort: 80
   internalPort: 1337
-
-
 resources:
   limits:
     cpu: 400m
@@ -70,5 +62,3 @@ readinessProbe:
   periodSeconds: 10
   successThreshold: 1
   timeoutSeconds: 1
-
-
