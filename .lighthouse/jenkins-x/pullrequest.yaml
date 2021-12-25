@@ -15,10 +15,10 @@ spec:
           name: ""
           resources:
             requests:
-              cpu: 200m
+              cpu: 500m
               memory: 1Gi
             limits:
-              cpu: 200m
+              cpu: 500m
               memory: 1Gi
           workingDir: /workspace/source
         steps:
