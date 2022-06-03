@@ -1,0 +1,18 @@
+name: Build
+on:
+  push:
+    branches-ignore:
+      - master
+      - main
+jobs:
+  docker-build:
+    name: Docker Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Build image and push to Docker Hub and GitHub Container Registry
+        uses: docker/build-push-action@v2
+        with:
+          tags: ghcr.io/simonjamesrowe/strap-cms/strapi-cms:latest
+          push: false
