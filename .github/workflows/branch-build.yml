@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Build image and push to Docker Hub and GitHub Container Registry
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v5
         with:
-          tags: ghcr.io/simonjamesrowe/strap-cms/strapi-cms:latest
+          tags: ghcr.io/simonjamesrowe/strapi-cms/strapi-cms:latest
           push: false
