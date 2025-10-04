@@ -7,9 +7,7 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi",
-    "lint": "npx eslint . --ext .js",
-    "lint:fix": "npx eslint . --ext .js --fix"
+    "strapi": "strapi"
   },
   "devDependencies": {},
   "dependencies": {
@@ -30,6 +28,10 @@
   },
   "strapi": {
     "uuid": "9475e843-4208-4d10-81a8-359db2e4520b"
+  },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
   },
   "license": "MIT"
 }
