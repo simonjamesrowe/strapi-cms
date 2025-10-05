@@ -1,4 +1,4 @@
-FROM strapi/base
+FROM node:14-alpine
 
 WORKDIR /app
 
@@ -13,6 +13,6 @@ RUN yarn build
 
 EXPOSE 1337
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 CMD ["yarn", "start"]
