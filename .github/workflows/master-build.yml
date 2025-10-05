@@ -5,13 +5,15 @@ on:
       - master
       - main
 jobs:
-  docker-build:
-    name: Docker Build and Deploy to GHCR
+  version-and-release:
+    name: Version and Release
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      packages: write
-  steps:
+    outputs:
+      new_tag: ${{ steps.tag_version.outputs.new_tag }}
+      changelog: ${{ steps.tag_version.outputs.changelog }}
+    steps:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
@@ -30,6 +32,24 @@ jobs:
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
 
+  build-docker-images:
+    name: Build Docker Images
+    needs: version-and-release
+    strategy:
+      matrix:
+        arch: [amd64, arm64]
+        include:
+          - arch: amd64
+            runner: ubuntu-latest
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    permissions:
+      packages: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -40,27 +60,72 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Docker metadata
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ghcr.io/simonjamesrowe/strapi-cms
-          tags: |
-            type=semver,pattern={{version}},value=${{ steps.tag_version.outputs.new_tag }}
-            type=semver,pattern={{major}}.{{minor}},value=${{ steps.tag_version.outputs.new_tag }}
-            type=semver,pattern={{major}},value=${{ steps.tag_version.outputs.new_tag }}
-            type=raw,value=latest
-          labels: |
-            org.opencontainers.image.title=strapi-cms
-            org.opencontainers.image.description=Headless CMS to drive content on www.simonjamesrowe.com
-
-      - name: Build and push to GitHub Container Registry
+      - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/${{ matrix.arch }}
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ghcr.io/simonjamesrowe/strapi-cms:${{ needs.version-and-release.outputs.new_tag }}-${{ matrix.arch }}
+          labels: |
+            org.opencontainers.image.title=strapi-cms
+            org.opencontainers.image.description=Headless CMS to drive content on www.simonjamesrowe.com
+            org.opencontainers.image.version=${{ needs.version-and-release.outputs.new_tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+  create-manifests:
+    name: Create Multi-Arch Manifests
+    needs: [version-and-release, build-docker-images]
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create and push versioned multi-arch manifest
+        run: |
+          docker manifest create ghcr.io/simonjamesrowe/strapi-cms:${{ needs.version-and-release.outputs.new_tag }} \
+            ghcr.io/simonjamesrowe/strapi-cms:${{ needs.version-and-release.outputs.new_tag }}-amd64 \
+            ghcr.io/simonjamesrowe/strapi-cms:${{ needs.version-and-release.outputs.new_tag }}-arm64
+          docker manifest push ghcr.io/simonjamesrowe/strapi-cms:${{ needs.version-and-release.outputs.new_tag }}
+
+      - name: Extract version components
+        id: version
+        run: |
+          VERSION=${{ needs.version-and-release.outputs.new_tag }}
+          # Remove 'v' prefix if present
+          VERSION=${VERSION#v}
+
+          # Split version into components
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+
+          echo "major=$MAJOR" >> $GITHUB_OUTPUT
+          echo "minor=$MINOR" >> $GITHUB_OUTPUT
+          echo "full=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create and push major.minor manifest
+        run: |
+          docker manifest create ghcr.io/simonjamesrowe/strapi-cms:${{ steps.version.outputs.major }}.${{ steps.version.outputs.minor }} \
+            ghcr.io/simonjamesrowe/strapi-cms:${{ needs.version-and-release.outputs.new_tag }}-amd64 \
+            ghcr.io/simonjamesrowe/strapi-cms:${{ needs.version-and-release.outputs.new_tag }}-arm64
+          docker manifest push ghcr.io/simonjamesrowe/strapi-cms:${{ steps.version.outputs.major }}.${{ steps.version.outputs.minor }}
+
+      - name: Create and push major manifest
+        run: |
+          docker manifest create ghcr.io/simonjamesrowe/strapi-cms:${{ steps.version.outputs.major }} \
+            ghcr.io/simonjamesrowe/strapi-cms:${{ needs.version-and-release.outputs.new_tag }}-amd64 \
+            ghcr.io/simonjamesrowe/strapi-cms:${{ needs.version-and-release.outputs.new_tag }}-arm64
+          docker manifest push ghcr.io/simonjamesrowe/strapi-cms:${{ steps.version.outputs.major }}
+
+      - name: Create and push latest manifest
+        run: |
+          docker manifest create ghcr.io/simonjamesrowe/strapi-cms:latest \
+            ghcr.io/simonjamesrowe/strapi-cms:${{ needs.version-and-release.outputs.new_tag }}-amd64 \
+            ghcr.io/simonjamesrowe/strapi-cms:${{ needs.version-and-release.outputs.new_tag }}-arm64
+          docker manifest push ghcr.io/simonjamesrowe/strapi-cms:latest
