@@ -66,6 +66,7 @@ jobs:
           context: .
           platforms: linux/${{ matrix.arch }}
           push: true
+          provenance: false
           tags: ghcr.io/simonjamesrowe/strapi-cms:${{ needs.version-and-release.outputs.new_tag }}-${{ matrix.arch }}
           labels: |
             org.opencontainers.image.title=strapi-cms
