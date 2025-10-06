@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  strapi:
+    image: ghcr.io/simonjamesrowe/strapi-cms:latest
+    container_name: strapi-cms
+    restart: unless-stopped
+    environment:
+      DATABASE_HOST: mongo
+      DATABASE_PORT: 27017
+      DATABASE_NAME: strapi
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi
+      NODE_ENV: production
+    ports:
+      - "1337:1337"
+    depends_on:
+      - mongo
+    networks:
+      - strapi-network
+
+  mongo:
+    image: mongo:4.4
+    container_name: strapi-mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: strapi
+      MONGO_INITDB_ROOT_PASSWORD: strapi
+      MONGO_INITDB_DATABASE: strapi
+    volumes:
+      - strapi-data:/data/db
+    networks:
+      - strapi-network
+
+volumes:
+  strapi-data:
+
+networks:
+  strapi-network:
+    driver: bridge
